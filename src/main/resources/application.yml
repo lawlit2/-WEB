@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: FoodManage
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.117.133:3306/外卖管理平台数据库
+  logging:
+    level:
+      org:
+         springframework:
+          web=DEBUG:
