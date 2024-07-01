@@ -77,4 +77,40 @@ public class GoodsController {
         }
         return JSON.toJSONString(map);
     }
+    @PostMapping("/Goods/SelectGoodSpecialOffers")
+    public String SelectSpecialOffers() {
+        List<Good> goods = service.SelectOrderBySpecialOffers();
+        if (goods == null) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("message", "未找到优惠活动相关信息");
+            return JSON.toJSONString(map);
+        } else {
+            return JSON.toJSONString(goods);
+        }
+    }
+    @PostMapping("/Goods/UpdateGoodSpecialOffers")
+    public String UpdateGoodSpecialOffers(@RequestParam("id") int id ){
+        Map<String, Object> map = new HashMap<>();
+        if (service.UpdateGoodsSpecialOffers(id)) {
+            map.put("message","优惠活动添加成功");
+            map.put("success",true);
+        }else{
+
+            map.put("message","优惠活动添加失败");
+            map.put("success",false);
+        }
+        return JSON.toJSONString(map);
+    }
+    @PostMapping("/Goods/DeleteGoodSpecialOffers")
+    public String DeleteGoodSpecialOffers(@RequestParam("id")int id) {
+        Map<String, Object> map = new HashMap<>();
+        if (service.DeleteGoodSpecialOffers(id)) {
+            map.put("message", "优惠活动删除成功");
+            map.put("success", true);
+        } else {
+            map.put("message", "优惠活动删除失败");
+            map.put("success", false);
+        }
+        return JSON.toJSONString(map);
+    }
 }

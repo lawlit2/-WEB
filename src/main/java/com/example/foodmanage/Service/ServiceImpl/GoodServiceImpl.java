@@ -46,4 +46,21 @@ public class GoodServiceImpl implements GoodService {
         Integer integer = mapper.DeleteDollar(id);
         return integer!=null;
     }
+
+    @Override
+    public List<Good> SelectOrderBySpecialOffers() {
+        return mapper.SelectOrderBySpecialOffers();
+    }
+
+    @Override
+    public boolean UpdateGoodsSpecialOffers(int id) {
+        Integer integer = mapper.UpdateGoodsSpecialOffers(id);
+        return integer!=null;
+    }
+
+    @Override
+    public boolean DeleteGoodSpecialOffers(int id) {
+        Integer integer = mapper.DeleteGoodSpecialOffers(id);
+        return integer!=null;
+    }
 }

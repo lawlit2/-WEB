@@ -1,7 +1,10 @@
 package com.example.foodmanage.Mapper;
 
+import com.example.foodmanage.Entity.Order;
 import com.example.foodmanage.Entity.OrderInfo;
 import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface OrdersMapper {
@@ -23,4 +26,6 @@ public interface OrdersMapper {
     Integer updateOrderInfo(@Param("orderInfo") OrderInfo orderInfo, @Param("id") int id);
     @Update("UPDATE orders SET merchantPhone =NULL, deliveryPhone =NULL, estimatedDeliveryTime = NULL WHERE id = #{id}")
     Integer DeleteOrderInfo(@Param("id") int id);
+    @Select("Select * from orders where business_id = #{business_id}")
+    List<Order> SelectOrderByBusinessID(int business_id);
 }

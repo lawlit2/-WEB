@@ -1,12 +1,15 @@
 package com.example.foodmanage.Service.ServiceImpl;
 
 
+import com.example.foodmanage.Entity.Order;
 import com.example.foodmanage.Entity.OrderInfo;
 import com.example.foodmanage.Mapper.OrdersMapper;
 import com.example.foodmanage.Service.OrderService;
 import jakarta.annotation.Resource;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrdersServiceImpl implements OrderService {
@@ -71,5 +74,11 @@ public class OrdersServiceImpl implements OrderService {
     public boolean DeleteOrderInfo(int id) {
         Integer integer = mapper.DeleteOrderInfo(id);
         return integer!=null;
+    }
+
+    @Override
+    public List<Order> SelectOrdersByBusinessID(int business_id) {
+        List<Order> orders = mapper.SelectOrderByBusinessID(business_id);
+        return orders;
     }
 }

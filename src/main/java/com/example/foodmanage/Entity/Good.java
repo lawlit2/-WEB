@@ -20,4 +20,6 @@ public class Good {
     int business_id;
     int category_id;
     boolean dailySetMeal;
+    BigDecimal Dollar;
+    boolean SpecialOffers;
 }

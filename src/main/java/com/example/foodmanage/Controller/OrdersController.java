@@ -1,6 +1,7 @@
 package com.example.foodmanage.Controller;
 
 import com.alibaba.fastjson2.JSON;
+import com.example.foodmanage.Entity.Order;
 import com.example.foodmanage.Entity.OrderInfo;
 import com.example.foodmanage.Service.OrderService;
 import jakarta.annotation.Resource;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -120,5 +122,15 @@ public class OrdersController {
         }
         return JSON.toJSONString(result);
     }
-
+    @PostMapping("/Orders/SelectOrderByBusinessId")
+    public String SelectOrderByBusinessID(@RequestParam("business_id") int business_id){
+        List<Order> orders = service.SelectOrdersByBusinessID(business_id);
+        if(orders==null){
+            Map<String,Object> result = new HashMap<>();
+            result.put("message","未找到相关信息");
+            return JSON.toJSONString(result);
+        }else{
+            return JSON.toJSONString(orders);
+        }
+    }
 }

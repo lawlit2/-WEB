@@ -12,4 +12,7 @@ public interface GoodService {
     BigDecimal SelectDollar(int id);
     boolean UpdateDollar(BigDecimal dollar,int id);
     boolean DeleteDollar(int id);
+    List<Good> SelectOrderBySpecialOffers();
+    boolean UpdateGoodsSpecialOffers(int id);
+    boolean DeleteGoodSpecialOffers(int id);
 }

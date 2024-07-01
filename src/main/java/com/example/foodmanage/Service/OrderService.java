@@ -1,7 +1,10 @@
 package com.example.foodmanage.Service;
 
+import com.example.foodmanage.Entity.Order;
 import com.example.foodmanage.Entity.OrderInfo;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface OrderService {
     boolean AddProductTimeById(String time,int id);
@@ -13,4 +16,5 @@ public interface OrderService {
     OrderInfo selectOrderInfo( int id);
     boolean  updateOrderInfo( OrderInfo orderInfo,  int id);
     boolean  DeleteOrderInfo(int id);
+    List<Order> SelectOrdersByBusinessID(int business_id);
 }

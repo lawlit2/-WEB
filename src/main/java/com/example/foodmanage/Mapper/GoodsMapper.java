@@ -23,4 +23,10 @@ public interface GoodsMapper {
     Integer UpdateDollar(BigDecimal dollar,int id);
     @Delete("update Dollar set Dollar = 0.00 where id = #{id}")
     Integer DeleteDollar(int id);
+    @Select("Select * from goods where SpecialOffers=1")
+    List<Good> SelectOrderBySpecialOffers();
+    @Update("update goods set SpecialOffers = 1 where id = #{id}")
+    Integer UpdateGoodsSpecialOffers(int id);
+    @Update("update goods set SpecialOffers = 0 where id = #{id}")
+    Integer DeleteGoodSpecialOffers(int id);
 }
